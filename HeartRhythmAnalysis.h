@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QString>
 #include <QVector>
+#include "EmergencyResponse.h"
+
 
 class HeartRhythmAnalysis : public QObject {
     Q_OBJECT
