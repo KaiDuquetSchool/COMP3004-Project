@@ -2,7 +2,7 @@
 #define SHOCKDELIVERY_H
 
 #include <QObject>
-#include "HeartRhythmAnalysis"
+#include "HeartRhythmAnalysis.h"
 
 class ShockDelivery : public QObject {
     Q_OBJECT
