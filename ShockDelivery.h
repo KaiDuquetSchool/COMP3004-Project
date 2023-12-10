@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include "HeartRhythmAnalysis.h"
+#include "EmergencyResponse.h"
+
 
 class ShockDelivery : public QObject {
     Q_OBJECT
