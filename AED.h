@@ -15,9 +15,9 @@ public:
      AED(QObject *parent = nullptr);
 
     void turnOn();                            // turns on AED
-    void guideThroughProcedure();             // Provides voice-guided instructions
-    void promptElectrodePlacement();          // Prompts to place electrodes on the patient's chest
-    void analyzeEcg();                        // Analyzes the patient's ECG rhythm
+    void guideThroughProcedure();             //  voice-guided instructions
+    void promptElectrodePlacement();          // prompts user to place electrodes on the patient's chest
+    void analyzeEcg();                        // analyzes the patient's ECG rhythm
     void chargeForShock();                    // automatically charges itself if shock is required
     // void promptForShockDelivery();            // prompts when to deliver the shock
     void deliverShock();                      // delivers shock
