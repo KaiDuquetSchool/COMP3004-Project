@@ -2,6 +2,8 @@
 #define CPR_H
 
 #include <QObject>
+#include "HeartRhythmAnalysis.h"
+#include "ShockDelivery.h"
 
 class Cpr : public QObject {
     Q_OBJECT
