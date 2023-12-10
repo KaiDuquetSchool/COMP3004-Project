@@ -4,6 +4,8 @@
 #include <QObject>
 #include "HeartRhythmAnalysis.h"
 #include "ShockDelivery.h"
+#include "EmergencyResponse.h"
+
 
 class Cpr : public QObject {
     Q_OBJECT
