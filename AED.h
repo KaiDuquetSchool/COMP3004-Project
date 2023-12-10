@@ -43,7 +43,7 @@ private:
     bool isAnalyzing;                         
     bool shockAdvised;                        
     bool shockDelivered;                      
-    bool isInCprMode;                         // AED is in CPR mode post-shock
+    bool isInCprMode;                         // if AED is in CPR mode post-shock
     QString currentVoicePrompt;               // stores the voice prompt to be played
     QString currentVisualMessage;             // stores the visual message to be displayed
 
