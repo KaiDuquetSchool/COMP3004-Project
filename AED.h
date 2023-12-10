@@ -16,7 +16,7 @@ public:
 
     void turnOn();                            // turns on AED
     void guideThroughProcedure();             //  voice-guided instructions
-    void promptElectrodePlacement();          // prompts user to place electrodes on the patient's chest
+    void promptElectrodePlacement();          // prompts user to place electrodes
     void analyzeEcg();                        // analyzes the patient's ECG rhythm
     void chargeForShock();                    // automatically charges itself if shock is required
     // void promptForShockDelivery();            // prompts when to deliver the shock
