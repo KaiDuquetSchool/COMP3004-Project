@@ -21,6 +21,7 @@ AED::AED(QObject* parent): QObject(parent) {
     connect(batteryTimer, SIGNAL (timeout()), this, SLOT (batteryTimerTimeout()));
 }
 
+// If the AED is already on, use this as a power off if nothing is going on
 bool AED::turnOn() {
     if (isOn) {
         if (!isInRhythmAnalysis && !isInShockDelivery && !isInCpr) {
@@ -37,6 +38,7 @@ bool AED::turnOn() {
     return isOn;
 }
 
+// When the battery timer times out, update power by different usage (in intensive process, reduce more battery)
 void AED::batteryTimerTimeout() {
 
     float usage = 0.1f;
@@ -45,6 +47,7 @@ void AED::batteryTimerTimeout() {
 
     emit updateBattery((int) battery);
 
+    // If we're critically low, abort CPR feedback and notify UI so it can disable everything smoothly
     if (battery <= 5) {
         emit batteryCriticallyLow();
         if (isInCpr)
@@ -55,6 +58,7 @@ void AED::batteryTimerTimeout() {
     }
 }
 
+// Only start a new Rhythm analysis if we're not in another procedure that was started by a previous analysis
 void AED::startRhythmAnalysis() {
     if (isInRhythmAnalysis || isInShockDelivery || isInCpr) return;
 
@@ -62,6 +66,7 @@ void AED::startRhythmAnalysis() {
     hra->startRhythmAnalysis();
 }
 
+// Similarly here, only start a shock delivery procedure if we're not in one or in CPR
 void AED::startShockDelivery() {
     if (isInShockDelivery || isInCpr) return;
     isInShockDelivery = true;

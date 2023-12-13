@@ -10,6 +10,7 @@
 #define STARTING_BATTERY 100
 
 
+// I made this class a Singleton for ease of access from any class without holding a reference.
 class AED : public QObject {
     Q_OBJECT
 
@@ -31,6 +32,7 @@ public:
 
     int getBattery() { return battery; }
 
+    // The analysis and cpr references.
     HeartRhythmAnalysis* hra;
     Cpr* cpr;
 
@@ -59,6 +61,7 @@ signals:
     void batteryCriticallyLow();
 
 private:
+    // State variables
     bool isInRhythmAnalysis;
     bool isInShockDelivery;
     bool isInCpr;
@@ -66,6 +69,7 @@ private:
     bool isOn = false;
     float battery = 100;
 
+    // Timer to continuously drain battery
     QTimer* batteryTimer;
 
     // private constructors and static instance

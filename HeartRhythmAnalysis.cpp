@@ -21,6 +21,8 @@ void HeartRhythmAnalysis::electrodesPlacementConfirmed() {
     analyzeHeartRhythm();
 }
 
+// This function and the one below need to be worked on. This just gives a static image
+// and doesn't do any analyzing. This part needs work.
 void HeartRhythmAnalysis::analyzeHeartRhythm() {
     AED *aed = AED::Instance();
 

@@ -21,32 +21,26 @@ public:
     void setLabels(QLabel* compressionTimingLabel, QLabel* countLabel);
 
 public slots:
-    void compression();
-    void flashLabel();
-    void unflashLabel();
-    void abort();
-
-signals:
-    void cprActivated();                 // signal for cpr acitvation
-    void cprStarted();                   // signal for cpr start
-    void feedbackProvided(const QString &feedback);// signal for feedback
-    void messageDisplayed(const QString &message); // signal for displaying message on display
+    void compression();                 // Slot every time a compression happens
+    void flashLabel();                  // Slot to flash the light green
+    void unflashLabel();                // Slot to turn off the flash
+    void abort();                       // Aborting the CPR real-time feedback
 
 private:
     bool doingCompressions = false;
 
-    QTimer* flashTimer;
-    QTimer* beatTimer;
-    QElapsedTimer compressionTimer;
+    QTimer* flashTimer;                 // This timer is just to turn off the green light after it flashes
+    QTimer* beatTimer;                  // This timer goes off every 500 milliseconds; this is the pace the CPR deliverer should follow
+    QElapsedTimer compressionTimer;     // This is an elapsed timer which is used to measure how closely the actual compressions are to the recommended pace
 
     int compressionCount;
-    qint64 runningAvg;
-    qint64 prevCompressionTime;
+    qint64 runningAvg;                  // The running average of the time between each compression
+    qint64 prevCompressionTime;         // The most recent compression time
 
-    std::queue<qint64> prevCompressions;
+    std::queue<qint64> prevCompressions;// The queue for the running average
 
-    QLabel* compressionTimingLabel;
-    QLabel* countLabel;
+    QLabel* compressionTimingLabel;     // The green light label
+    QLabel* countLabel;                 // The compression count label
 
     AED* aed;
 
