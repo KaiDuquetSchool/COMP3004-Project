@@ -6,42 +6,42 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>812</width>
-    <height>600</height>
+    <width>888</width>
+    <height>637</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(226, 255, 122);</string>
+   <string notr="true">background-color: #53616E;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>440</y>
-      <width>811</width>
+      <x>10</x>
+      <y>10</y>
+      <width>241</width>
       <height>91</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">font-size: 100px;
 qproperty-alignment: AlignCenter;
-color: rgb(65, 65, 65);</string>
+color: rgb(218, 218, 218);</string>
     </property>
     <property name="text">
      <string>AED</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser">
+   <widget class="QTextBrowser" name="systemLog">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>50</y>
-      <width>251</width>
-      <height>491</height>
+      <y>290</y>
+      <width>241</width>
+      <height>311</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -51,9 +51,9 @@ color: rgb(65, 65, 65);</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>7</x>
-      <y>30</y>
-      <width>251</width>
+      <x>10</x>
+      <y>270</y>
+      <width>241</width>
       <height>20</height>
      </rect>
     </property>
@@ -65,81 +65,323 @@ font-weight: bold;</string>
      <string>S Y S T E M  L O G</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="button1">
+   <widget class="QPushButton" name="analyzeHeartRhythmButton">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>800</x>
+      <y>120</y>
+      <width>71</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 188, 196);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="aedDisplay">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>20</y>
+      <width>351</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: black;
+color: white;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="powerButton">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>20</y>
+      <width>71</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 188, 196);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="diagnosisResultLabel">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>470</y>
+      <width>511</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="batteryBar">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
       <y>140</y>
-      <width>111</width>
-      <height>91</height>
+      <width>221</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>100</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>120</y>
+      <width>241</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 188, 196);</string>
+     <string notr="true">qproperty-alignment: AlignCenter;
+font-weight: bold;</string>
+    </property>
+    <property name="text">
+     <string>B A T T E R Y</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>190</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>Electrodes Status:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="electrodeStatusLabel">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>190</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>Good</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="prepareShockButton">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>190</y>
+      <width>71</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 188, 196);
+color: black;</string>
+    </property>
+    <property name="text">
+     <string>Prepare
+Shock</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="confirmElectrodesButton">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>310</y>
+      <width>71</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 188, 196);
+color: black;</string>
+    </property>
+    <property name="text">
+     <string>Confirm
+Electrodes</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="confirmShockButton">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>310</y>
+      <width>71</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 188, 196);
+color: black;</string>
+    </property>
+    <property name="text">
+     <string>Confirm
+Shock</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="prepareCprButton">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>260</y>
+      <width>71</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 188, 196);
+color: black;</string>
+    </property>
+    <property name="text">
+     <string>Prepare
+CPR</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="compressionButton">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>310</y>
+      <width>191</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 188, 196);
+color: black;</string>
+    </property>
+    <property name="text">
+     <string>CPR COMPRESSION</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="compressionTimingLabel">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>310</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(199, 199, 199)</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser_3">
+   <widget class="QLabel" name="compressionCountLabel">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>240</y>
-      <width>261</width>
-      <height>181</height>
+      <x>620</x>
+      <y>350</y>
+      <width>51</width>
+      <height>20</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: black;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="button4">
-    <property name="geometry">
-     <rect>
-      <x>680</x>
-      <y>460</y>
-      <width>111</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 188, 196);</string>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
     <property name="text">
-     <string/>
+     <string>0 / 30</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="button3">
+   <widget class="QPushButton" name="stopCprButton">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>180</y>
-      <width>111</width>
-      <height>91</height>
+      <x>800</x>
+      <y>330</y>
+      <width>71</width>
+      <height>61</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 188, 196);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="button2">
-    <property name="geometry">
-     <rect>
-      <x>680</x>
-      <y>60</y>
-      <width>111</width>
-      <height>91</height>
-     </rect>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 188, 196);</string>
+     <string notr="true">background-color: rgb(255, 188, 196);
+color: black;</string>
     </property>
     <property name="text">
-     <string/>
+     <string>Stop
+CPR</string>
     </property>
    </widget>
   </widget>
@@ -148,8 +390,8 @@ font-weight: bold;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>812</width>
-     <height>22</height>
+     <width>888</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>

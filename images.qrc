@@ -4,5 +4,9 @@
         <file>img4.png</file>
         <file>img2.png</file>
         <file>img3.png</file>
+        <file>asystole.png</file>
+        <file>pea.png</file>
+        <file>vf.png</file>
+        <file>vt.png</file>
     </qresource>
 </RCC>

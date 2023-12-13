@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QString>
 #include <QVector>
-#include "EmergencyResponse.h"
+#include <QTimer>
 
 
 class HeartRhythmAnalysis : public QObject {
@@ -13,22 +13,19 @@ class HeartRhythmAnalysis : public QObject {
 public:
 
     //constructor
-     HeartRhythmAnalysis(QObject *parent = nullptr);
+    HeartRhythmAnalysis(QObject *parent = nullptr);
 
-    void startRhythmAnalysis();                     // initiates the heart rhythm analysis 
-    void placeElectrodes();                         //  placing electrodes
-    void confirmElectrodesPlacement();              // confirming placement of electrodes
-    QString analyzeHeartRhythm();                   // analyzes type of rhythm
-    bool isRhythmShockable();                       // checking if rhythm is shockable 
-    void recordElectricalActivity(float activity);  // records electrical activity data point to determine whether a shockable rhythm is present
+    void startRhythmAnalysis();                     // initiates the heart rhythm analysis
+    void analyzeHeartRhythm();                      // analyzes type of rhythm
 
-signals:
+public slots:
     void electrodesPlacementConfirmed();            // signal for confirmation of electrodes placement 
-    void rhythmAnalyzed(const QString &rhythmType); // signal emitted when rhythm analysis is complete
-    void displayMessage(const QString &message);    // signal for displaying message on display
+    void rhythmAnalyzed();                           // signal emitted when rhythm analysis is complete
 
 private:
-    bool electrodesPlaced;
+    QTimer* timer;
+
+    bool electrodesPlaced = false;
     QVector<float> electricalActivityData;          // storing electrical activity data
     QString currentRhythmType;
 

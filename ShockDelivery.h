@@ -13,8 +13,6 @@ public:
     //constructor 
     ShockDelivery(QObject *parent = nullptr);
 
-    void promptPlaceElectrodes();               // prompting user to place electrodes
-    void promptDeliverShock();                  // prompting  user to deliver a shock if shockable
     void deliverShock();                        // delivering a shock 
 
 signals:

@@ -9,10 +9,22 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    AED.cpp \
+    Cpr.cpp \
+    ECG.cpp \
+    EmergencyResponse.cpp \
+    HeartRhythmAnalysis.cpp \
+    ShockDelivery.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    AED.h \
+    Cpr.h \
+    ECG.h \
+    EmergencyResponse.h \
+    HeartRhythmAnalysis.h \
+    ShockDelivery.h \
     mainwindow.h
 
 FORMS += \

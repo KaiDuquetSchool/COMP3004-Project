@@ -4,19 +4,22 @@
 #include <QObject>
 
 #include "HeartRhythmAnalysis.h"
+#include "Cpr.h"
 #include "ECG.h"
+
+#define STARTING_BATTERY 100
 
 
 class AED : public QObject {
     Q_OBJECT
 
 public:
-     //contructor
-     AED(QObject *parent = nullptr);
+    // singleton instance getter
+    static AED* Instance(QObject* parent = nullptr);
 
-    void turnOn();                            // turns on AED
+    bool turnOn();                            // turns on AED
+
     void guideThroughProcedure();             //  voice-guided instructions
-    void promptElectrodePlacement();          // prompts user to place electrodes
     void analyzeEcg();                        // analyzes the patient's ECG rhythm
     void chargeForShock();                    // automatically charges itself if shock is required
     // void promptForShockDelivery();            // prompts when to deliver the shock
@@ -26,28 +29,49 @@ public:
     void indicateAnalyzing();                 // 'analyzing'  heart rhythm
     void adviseOnShock();                     // 'shock advised' if necessary
 
+    int getBattery() { return battery; }
+
+    HeartRhythmAnalysis* hra;
+    Cpr* cpr;
+
+public slots:
+    void startRhythmAnalysis();
+    void startShockDelivery();
+    void startCpr();
+    void stopCpr();
+
+    void shockDelivered();
+
+    void batteryTimerTimeout();
 signals:
-    void turnedOn();                          
-    void electrodePlacementPrompted();        
-    void ecgAnalysisStarted();                
-    void shockCharged();                      
-    void shockDelivered();                    
-    void cprPrompted();                       
-    void standClearWarningIssued();           
-    void analyzingIndicated();                
-    void shockAdvised();                      
+
+    void updateDiagnosisDisplay(QString diagnosis);
+    void updateDisplay(QString message);
+    void log(QString message);
+
+    void promptElectrodes(QString message);
+    void promptShock(QString message);
+
+    void enableCprUI(bool enable);
+    void freezeCompressionButton();
+
+    void updateBattery(int newLevel);
+    void batteryCriticallyLow();
 
 private:
-    bool isOn;                               
-    bool electrodePadsPlaced;                 
-    bool isAnalyzing;                         
-    bool shockAdvised;                        
-    bool shockDelivered;                      
-    bool isInCprMode;                         // if AED is in CPR mode post-shock
-    QString currentVoicePrompt;               // stores the voice prompt to be played
-    QString currentVisualMessage;             // stores the visual message to be displayed
+    bool isInRhythmAnalysis;
+    bool isInShockDelivery;
+    bool isInCpr;
 
-    
+    bool isOn = false;
+    float battery = 100;
+
+    QTimer* batteryTimer;
+
+    // private constructors and static instance
+    AED();
+    AED(QObject* parent = nullptr);
+    static AED* instance;
 };
 
 #endif 

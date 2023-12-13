@@ -2,22 +2,29 @@
 #define CPR_H
 
 #include <QObject>
-#include "HeartRhythmAnalysis.h"
-#include "ShockDelivery.h"
-#include "EmergencyResponse.h"
+#include <QTimer>
+#include <QElapsedTimer>
+#include <QLabel>
+#include <queue>
 
+class AED;
 
 class Cpr : public QObject {
     Q_OBJECT
 
 public:
     //constructor
-   Cpr(QObject *parent = nullptr);
+    Cpr(AED *parent = nullptr);
 
-    void activateCprPrompt();            // activating prompt to start CPR
     void start();                        // starting cpr
-    void cprConfirmed();                 // confirming cpr
-    void cprFeedback();                  // feedback for cpr
+
+    void setLabels(QLabel* compressionTimingLabel, QLabel* countLabel);
+
+public slots:
+    void compression();
+    void flashLabel();
+    void unflashLabel();
+    void abort();
 
 signals:
     void cprActivated();                 // signal for cpr acitvation
@@ -26,9 +33,22 @@ signals:
     void messageDisplayed(const QString &message); // signal for displaying message on display
 
 private:
-    int compressionRate;                 // rate of compressions
-    int compressionDepth;                // depth of compressions
-    void updatePatientResponse();        // updating patients response after Cpr
+    bool doingCompressions = false;
+
+    QTimer* flashTimer;
+    QTimer* beatTimer;
+    QElapsedTimer compressionTimer;
+
+    int compressionCount;
+    qint64 runningAvg;
+    qint64 prevCompressionTime;
+
+    std::queue<qint64> prevCompressions;
+
+    QLabel* compressionTimingLabel;
+    QLabel* countLabel;
+
+    AED* aed;
 
 };
 
