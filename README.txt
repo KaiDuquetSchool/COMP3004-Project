@@ -14,7 +14,7 @@ Kai Duquet: Sequence Diagrams, Header Files, QT UI, C++ Implementation
 
 Maya Cassis: Use cases, helped with diagrams
 
-Gulet Mohamed:
+Guled Mohamed: Uml Diagram, QT UI
 
 ------------
 
