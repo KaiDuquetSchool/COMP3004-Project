@@ -1,7 +1,7 @@
 Team Members:
 
 Guled Mohamed
-Maya Cassis
+Maya Cassis 101149888
 Mohammad Raza 101199686
 Kai Duquet
 
@@ -12,7 +12,7 @@ Mohammad Raza: Completed the tracebility matrix, state diagrams, sequence diagra
 
 Kai Duquet: Sequence Diagrams, Header Files, QT UI, C++ Implementation
 
-Maya Cassis:
+Maya Cassis: Use cases, helped with diagrams
 
 Gulet Mohamed:
 
