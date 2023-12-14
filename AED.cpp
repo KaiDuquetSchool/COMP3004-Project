@@ -3,15 +3,16 @@
 
 AED* AED::instance = nullptr;
 
-AED* AED::Instance(QObject* parent) {
+AED* AED::Instance(QObject* parent, PatientScenario* scenario) {
     if (instance == nullptr)
-        instance = new AED(parent);
+        instance = new AED(parent, scenario);
     return instance;
 }
 
-AED::AED(QObject* parent): QObject(parent) {
+AED::AED(QObject* parent, PatientScenario* scenario): QObject(parent) {
     this->hra = new HeartRhythmAnalysis(this);
     this->cpr = new Cpr(this);
+    this->patient = scenario;
     isInRhythmAnalysis = false;
     isInShockDelivery = false;
     isInCpr = false;

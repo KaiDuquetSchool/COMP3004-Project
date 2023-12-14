@@ -9,6 +9,14 @@
 
 #define STARTING_BATTERY 100
 
+#define CHILD 0
+#define ADULT 1
+
+typedef struct PatientScenario_t {
+    const char* ecgDiagnosis;
+    int ageRange;
+} PatientScenario;
+
 
 // I made this class a Singleton for ease of access from any class without holding a reference.
 class AED : public QObject {
@@ -16,7 +24,7 @@ class AED : public QObject {
 
 public:
     // singleton instance getter
-    static AED* Instance(QObject* parent = nullptr);
+    static AED* Instance(QObject* parent = nullptr, PatientScenario* patient = nullptr);
 
     bool turnOn();                            // turns on AED
 
@@ -35,6 +43,7 @@ public:
     // The analysis and cpr references.
     HeartRhythmAnalysis* hra;
     Cpr* cpr;
+    PatientScenario *patient;
 
 public slots:
     void startRhythmAnalysis();
@@ -72,9 +81,11 @@ private:
     // Timer to continuously drain battery
     QTimer* batteryTimer;
 
+    // Patient scenario chosen for this simulation
+
     // private constructors and static instance
     AED();
-    AED(QObject* parent = nullptr);
+    AED(QObject* parent = nullptr, PatientScenario* scenario = nullptr);
     static AED* instance;
 };
 

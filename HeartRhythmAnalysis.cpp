@@ -39,6 +39,6 @@ void HeartRhythmAnalysis::rhythmAnalyzed() {
 
     AED *aed = AED::Instance();
 
-    QString diagnosis = "vf";
+    QString diagnosis = aed->patient->ecgDiagnosis;
     emit aed->updateDiagnosisDisplay(diagnosis);
 }

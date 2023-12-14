@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "AED.h"
 
 #include <QTimer>
 #include <iostream>
@@ -17,7 +18,11 @@ MainWindow::MainWindow(QWidget *parent):QMainWindow(parent), ui(new Ui::MainWind
     ui->powerButton->setIcon(ButtonIcon4);
     ui->powerButton->setIconSize(pixmap4.rect().size() * 0.75);
 
-    aed = AED::Instance(this);
+    PatientScenario* patient = new PatientScenario();
+    patient->ecgDiagnosis = "asystole";
+    patient->ageRange = ADULT;
+
+    aed = AED::Instance(this, patient);
     timer = new QTimer(this); // general use timer
 
     // attach all display signals and slots
